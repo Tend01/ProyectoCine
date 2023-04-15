@@ -49,20 +49,35 @@ public class Dulceria extends javax.swing.JFrame {
         jPanel1.add(icono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, -1));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setForeground(new java.awt.Color(255, 204, 204));
         jLabel1.setText("LA MEJOR DULCERIA DEL MULTIVERSO");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 330, 880, 90));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 960, 90));
 
         Refresco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/coquis.png"))); // NOI18N
         Refresco.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Refresco.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RefrescoMouseClicked(evt);
+            }
+        });
         jPanel1.add(Refresco, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 250, 250));
 
         PopCorn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/palomitas.png"))); // NOI18N
         PopCorn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        PopCorn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PopCornMouseClicked(evt);
+            }
+        });
         jPanel1.add(PopCorn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 250, 250));
 
         mufin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/mufin.png"))); // NOI18N
+        mufin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mufinMouseClicked(evt);
+            }
+        });
         jPanel1.add(mufin, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 250, 250));
         mufin.getAccessibleContext().setAccessibleDescription("");
 
@@ -78,7 +93,7 @@ public class Dulceria extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 120, 30));
 
-        fondillo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/FondoDul_1.png"))); // NOI18N
+        fondillo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Login.png"))); // NOI18N
         jPanel1.add(fondillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
@@ -91,6 +106,24 @@ public class Dulceria extends javax.swing.JFrame {
         dispose();
         principal.setVisible(true);
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void PopCornMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PopCornMouseClicked
+        PalomitasCompra principal = new PalomitasCompra();
+        dispose();
+        principal.setVisible(true);
+    }//GEN-LAST:event_PopCornMouseClicked
+
+    private void RefrescoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefrescoMouseClicked
+        refrescoCompra principal = new refrescoCompra();
+        dispose();
+        principal.setVisible(true);
+    }//GEN-LAST:event_RefrescoMouseClicked
+
+    private void mufinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mufinMouseClicked
+        PostreCompra principal = new PostreCompra();
+        dispose();
+        principal.setVisible(true);
+    }//GEN-LAST:event_mufinMouseClicked
 
     /**
      * @param args the command line arguments

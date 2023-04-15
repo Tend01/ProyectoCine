@@ -194,24 +194,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackMouseClicked
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        AnimationClass ac = new AnimationClass();
-        ac.jLabelXLeft(50, -650, 40, 5, Publi1);
-        
-        AnimationClass acc = new AnimationClass();
-        acc.jLabelXLeft(400, -300, 40, 5, Publi2);
-        
-        AnimationClass accc = new AnimationClass();
-        accc.jLabelXLeft(750, 50, 40, 5, Publi3);
-        
-        AnimationClass acccc = new AnimationClass();
-        acccc.jLabelXLeft(1100, 400, 40, 5, Publi4);
-        
-        AnimationClass accccc = new AnimationClass();
-        accccc.jLabelXLeft(1450, 750, 40, 5, Publi5);
-        
-        
-        
-        
+
     }//GEN-LAST:event_formWindowOpened
 
     private void btnNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNextMouseClicked
