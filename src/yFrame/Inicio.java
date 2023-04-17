@@ -176,19 +176,19 @@ public class Inicio extends javax.swing.JFrame {
 
     private void btnBackMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseClicked
         AnimationClass aacc = new AnimationClass();
-        aacc.jLabelXRight(-650, 50, 40, 5, Publi1);
+        aacc.jLabelXRight(-650, 50, 25, 5, Publi1);
         
         AnimationClass aac = new AnimationClass();
-        aac.jLabelXRight(-300, 400, 40, 5, Publi2);
+        aac.jLabelXRight(-300, 400, 25, 5, Publi2);
         
         AnimationClass aaac = new AnimationClass();
-        aaac.jLabelXRight(50, 750, 40, 5, Publi3);
+        aaac.jLabelXRight(50, 750, 25, 5, Publi3);
         
         AnimationClass aaaac = new AnimationClass();
-        aaaac.jLabelXRight(400, 1100, 40, 5, Publi4);
+        aaaac.jLabelXRight(400, 1100, 25, 5, Publi4);
         
         AnimationClass aaaaac = new AnimationClass();
-        aaaaac.jLabelXRight(750, 1450, 40, 5, Publi5);
+        aaaaac.jLabelXRight(750, 1450, 25, 5, Publi5);
         
         
     }//GEN-LAST:event_btnBackMouseClicked
@@ -199,19 +199,19 @@ public class Inicio extends javax.swing.JFrame {
 
     private void btnNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNextMouseClicked
          AnimationClass ac = new AnimationClass();
-        ac.jLabelXLeft(50, -650, 40, 5, Publi1);
+        ac.jLabelXLeft(50, -650, 25, 5, Publi1);
         
         AnimationClass acc = new AnimationClass();
-        acc.jLabelXLeft(400, -300, 40, 5, Publi2);
+        acc.jLabelXLeft(400, -300, 25, 5, Publi2);
         
         AnimationClass accc = new AnimationClass();
-        accc.jLabelXLeft(750, 50, 40, 5, Publi3);
+        accc.jLabelXLeft(750, 50, 25, 5, Publi3);
         
         AnimationClass acccc = new AnimationClass();
-        acccc.jLabelXLeft(1100, 400, 40, 5, Publi4);
+        acccc.jLabelXLeft(1100, 400, 25, 5, Publi4);
         
         AnimationClass accccc = new AnimationClass();
-        accccc.jLabelXLeft(1450, 750, 40, 5, Publi5);
+        accccc.jLabelXLeft(1450, 750, 25, 5, Publi5);
         
         
     }//GEN-LAST:event_btnNextMouseClicked
@@ -244,19 +244,19 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void Publi1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Publi1MouseClicked
-         KimetsuPagina principal = new KimetsuPagina();
+        KimetsuPagina principal = new KimetsuPagina();
         dispose();
         principal.setVisible(true);
     }//GEN-LAST:event_Publi1MouseClicked
 
     private void Publi2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Publi2MouseClicked
-        ElGatoPagina principal = new ElGatoPagina();
+        GatoPagina principal = new GatoPagina();
         dispose();
         principal.setVisible(true);
     }//GEN-LAST:event_Publi2MouseClicked
 
     private void Publi3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Publi3MouseClicked
-        AvatarPagina principal = new AvatarPagina();
+       AvatarPagina principal = new AvatarPagina();
         dispose();
         principal.setVisible(true);
     }//GEN-LAST:event_Publi3MouseClicked
@@ -268,7 +268,7 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_Publi4MouseClicked
 
     private void Publi5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Publi5MouseClicked
-        AvengersPagina principal = new AvengersPagina();
+       AvengerPagina principal = new AvengerPagina();
         dispose();
         principal.setVisible(true);
     }//GEN-LAST:event_Publi5MouseClicked

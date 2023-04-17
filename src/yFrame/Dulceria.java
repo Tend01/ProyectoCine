@@ -114,7 +114,7 @@ public class Dulceria extends javax.swing.JFrame {
     }//GEN-LAST:event_PopCornMouseClicked
 
     private void RefrescoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefrescoMouseClicked
-        refrescoCompra principal = new refrescoCompra();
+        RefrescoCompra principal = new RefrescoCompra();
         dispose();
         principal.setVisible(true);
     }//GEN-LAST:event_RefrescoMouseClicked

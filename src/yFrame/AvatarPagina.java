@@ -1,11 +1,17 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package yFrame;
 
-import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
+
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 /**
  *
@@ -13,12 +19,58 @@ import javax.swing.JOptionPane;
  */
 public class AvatarPagina extends javax.swing.JFrame {
 
+    
+     private int boletosDisponibles = 30; // Número de asientos disponibles
+    private int boletosSeleccionados = 0; // Número de asientos seleccionados
+      private ArrayList<Integer> asientosSeleccionados = new ArrayList<>();
+    
+  
     /**
      * Creates new form KimetsuPagina
      */
     public AvatarPagina() {
+  
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        for (int i = 1; i <= boletosDisponibles; i++) {
+            JButton botonAsiento = new JButton("Asiento " + i);
+            botonAsiento.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                     if (boletosSeleccionados < boletosDisponibles) {
+                        JButton boton = (JButton) e.getSource();
+                        boton.setEnabled(false);
+                        int numeroAsiento = Integer.parseInt(boton.getText().replace("Asiento ", ""));
+                        asientosSeleccionados.add(numeroAsiento); // Agregar el número de asiento a la colección
+                        boletosSeleccionados++;
+                        actualizarInfo();
+                    } else {
+                        JOptionPane.showMessageDialog(AvatarPagina.this, "Ya ha seleccionado todos los asientos permitidos.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
+            });
+            panelAsientos.add(botonAsiento);
+        }
+                   
+        
+         spinnerCantidad.addChangeListener(new ChangeListener() {
+            @Override
+            public void stateChanged(ChangeEvent e) {
+                int cantidad = (int) spinnerCantidad.getValue();
+                boletosDisponibles = cantidad;
+                actualizarInfo();
+            }
+        });
+        
+    }
+    
+     public void abrirNuevoJFrame() {
+        // Crear una instancia del nuevo JFrame y pasar los datos de los asientos
+        KimetsuPagar kimetsuPagar = new KimetsuPagar(asientosSeleccionados, boletosSeleccionados);
+        dispose();
+        kimetsuPagar.setVisible(true);
+        
     }
 
     /**
@@ -31,14 +83,18 @@ public class AvatarPagina extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Texto = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        guardarBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         text = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        spinnerCantidad = new javax.swing.JSpinner();
         jButton1 = new javax.swing.JButton();
+        panelAsientos = new javax.swing.JPanel();
+        labelInfo = new javax.swing.JLabel();
+        PagarBtn = new javax.swing.JButton();
+        Pantalla = new javax.swing.JLabel();
         fondillo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,56 +102,54 @@ public class AvatarPagina extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Texto.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Texto.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        Texto.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TextoActionPerformed(evt);
-            }
-        });
-        Texto.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                TextoKeyTyped(evt);
-            }
-        });
-        jPanel1.add(Texto, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 250, 70, 30));
-
-        jButton2.setBackground(new java.awt.Color(255, 153, 153));
-        jButton2.setForeground(new java.awt.Color(0, 0, 0));
-        jButton2.setText("Siguiente");
-        jButton2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        guardarBtn.setBackground(new java.awt.Color(255, 153, 153));
+        guardarBtn.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        guardarBtn.setForeground(new java.awt.Color(0, 0, 0));
+        guardarBtn.setText("Guardar");
+        guardarBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        guardarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                guardarBtnMouseClicked(evt);
             }
         });
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        guardarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                guardarBtnActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 400, 130, 30));
+        jPanel1.add(guardarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 130, 130, 30));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(153, 153, 255));
-        jLabel3.setText("x $60.00 pesos el boleto");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 240, 280, 40));
+        jLabel3.setText("x $40.00 pesos el boleto");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 60, 280, 40));
 
         text.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         text.setForeground(new java.awt.Color(255, 204, 204));
         text.setText("¡Escoja cuantos boletos desea comprar!");
-        jPanel1.add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 170, 330, 50));
+        jPanel1.add(text, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 330, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/avaChi.gif"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 120, 180));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 120, 180));
 
         jLabel2.setForeground(new java.awt.Color(255, 204, 204));
         jLabel2.setText("a su familia, este busca venganza. ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 260, 30));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 250, 50));
 
         jLabel4.setForeground(new java.awt.Color(255, 204, 204));
         jLabel4.setText("Despues de que nuestro protagonista perdiera ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 260, 50));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 260, 50));
+
+        spinnerCantidad.setFont(new java.awt.Font("Roboto Black", 0, 12)); // NOI18N
+        spinnerCantidad.setModel(new javax.swing.SpinnerNumberModel(1, 1, 30, 1));
+        spinnerCantidad.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        spinnerCantidad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        spinnerCantidad.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                spinnerCantidadPropertyChange(evt);
+            }
+        });
+        jPanel1.add(spinnerCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 70, 80, 30));
 
         jButton1.setBackground(new java.awt.Color(202, 151, 166));
         jButton1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -112,7 +166,39 @@ public class AvatarPagina extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 400, 120, 30));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 380, 120, 30));
+
+        panelAsientos.setBackground(new java.awt.Color(102, 102, 102));
+        panelAsientos.setLayout(new java.awt.GridLayout(6, 0));
+        jPanel1.add(panelAsientos, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 520, 280));
+        panelAsientos.getAccessibleContext().setAccessibleParent(jLabel1);
+
+        labelInfo.setFont(new java.awt.Font("Roboto Black", 0, 14)); // NOI18N
+        labelInfo.setForeground(new java.awt.Color(255, 204, 255));
+        jPanel1.add(labelInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 270, 40));
+
+        PagarBtn.setBackground(new java.awt.Color(255, 153, 153));
+        PagarBtn.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
+        PagarBtn.setForeground(new java.awt.Color(0, 0, 0));
+        PagarBtn.setText("Pagar");
+        PagarBtn.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        PagarBtn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PagarBtnMouseClicked(evt);
+            }
+        });
+        PagarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PagarBtnActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PagarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 400, 130, 30));
+
+        Pantalla.setFont(new java.awt.Font("Segoe Script", 0, 18)); // NOI18N
+        Pantalla.setForeground(new java.awt.Color(153, 0, 0));
+        Pantalla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Pantalla.setText("PANTALLA");
+        jPanel1.add(Pantalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 430, 20));
 
         fondillo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/Login.png"))); // NOI18N
         jPanel1.add(fondillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
@@ -132,44 +218,32 @@ public class AvatarPagina extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void TextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextoActionPerformed
+    private void guardarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarBtnActionPerformed
         // TODO add your handling code here:
-       
-    }//GEN-LAST:event_TextoActionPerformed
+    }//GEN-LAST:event_guardarBtnActionPerformed
 
-    private void TextoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextoKeyTyped
-         char validar = evt.getKeyChar();
+    private void guardarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_guardarBtnMouseClicked
         
-        if(Texto.getText().length()>=2){
-            evt.consume();
-            Toolkit.getDefaultToolkit().beep();
-        }
-        if (Character.isLetter(validar)){
-            getToolkit().beep();
-            evt.consume();
-            
-            JOptionPane.showMessageDialog(rootPane, "Por favor ingresa solo numeros");
-        }
-    }//GEN-LAST:event_TextoKeyTyped
+    }//GEN-LAST:event_guardarBtnMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void spinnerCantidadPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_spinnerCantidadPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_spinnerCantidadPropertyChange
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        // TODO add your handling code here:
-        int x = Integer.parseInt(Texto.getText());
-        
-        if(x > 0 && x < 30){
-        KimetsuAsientos principal = new KimetsuAsientos();
+    private void PagarBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PagarBtnMouseClicked
+          AvatarPagar principal = new AvatarPagar(asientosSeleccionados, boletosSeleccionados);
         dispose();
         principal.setVisible(true);
-      
-        }else{
-        JOptionPane.showMessageDialog(rootPane, "solo valores entre 1 y 30");
-        } 
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_PagarBtnMouseClicked
 
+    private void PagarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PagarBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PagarBtnActionPerformed
+
+     private void actualizarInfo() {
+              labelInfo.setText("Asientos seleccionados: " + boletosSeleccionados + "/" + boletosDisponibles);
+            }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -196,10 +270,6 @@ public class AvatarPagina extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -210,15 +280,19 @@ public class AvatarPagina extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Texto;
+    private javax.swing.JButton PagarBtn;
+    private javax.swing.JLabel Pantalla;
     private javax.swing.JLabel fondillo;
+    private javax.swing.JButton guardarBtn;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelInfo;
+    private javax.swing.JPanel panelAsientos;
+    private javax.swing.JSpinner spinnerCantidad;
     private javax.swing.JLabel text;
     // End of variables declaration//GEN-END:variables
 }
