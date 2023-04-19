@@ -4,8 +4,6 @@
  */
 package yFrame;
 
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author angel
@@ -34,9 +32,7 @@ public class Dulceria extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         icono = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        Refresco = new javax.swing.JLabel();
         PopCorn = new javax.swing.JLabel();
-        mufin = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         fondillo = new javax.swing.JLabel();
 
@@ -50,36 +46,19 @@ public class Dulceria extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 204, 204));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("LA MEJOR DULCERIA DEL MULTIVERSO");
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 960, 90));
 
-        Refresco.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/coquis.png"))); // NOI18N
-        Refresco.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Refresco.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RefrescoMouseClicked(evt);
-            }
-        });
-        jPanel1.add(Refresco, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, 250, 250));
-
-        PopCorn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/palomitas.png"))); // NOI18N
+        PopCorn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/dulces.png"))); // NOI18N
         PopCorn.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         PopCorn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PopCornMouseClicked(evt);
             }
         });
-        jPanel1.add(PopCorn, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 250, 250));
-
-        mufin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/mufin.png"))); // NOI18N
-        mufin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                mufinMouseClicked(evt);
-            }
-        });
-        jPanel1.add(mufin, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 250, 250));
-        mufin.getAccessibleContext().setAccessibleDescription("");
+        jPanel1.add(PopCorn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 40, 720, 290));
 
         jButton1.setBackground(new java.awt.Color(202, 151, 166));
         jButton1.setFont(new java.awt.Font("Roboto", 1, 14)); // NOI18N
@@ -108,22 +87,10 @@ public class Dulceria extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void PopCornMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PopCornMouseClicked
-        PalomitasCompra principal = new PalomitasCompra();
+        DulceriaComprar principal = new DulceriaComprar();
         dispose();
         principal.setVisible(true);
     }//GEN-LAST:event_PopCornMouseClicked
-
-    private void RefrescoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RefrescoMouseClicked
-        RefrescoCompra principal = new RefrescoCompra();
-        dispose();
-        principal.setVisible(true);
-    }//GEN-LAST:event_RefrescoMouseClicked
-
-    private void mufinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mufinMouseClicked
-        PostreCompra principal = new PostreCompra();
-        dispose();
-        principal.setVisible(true);
-    }//GEN-LAST:event_mufinMouseClicked
 
     /**
      * @param args the command line arguments
@@ -164,12 +131,10 @@ public class Dulceria extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel PopCorn;
-    private javax.swing.JLabel Refresco;
     private javax.swing.JLabel fondillo;
     private javax.swing.JLabel icono;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel mufin;
     // End of variables declaration//GEN-END:variables
 }

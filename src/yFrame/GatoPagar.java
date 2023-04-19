@@ -195,16 +195,16 @@ public class GatoPagar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PagarBtnActionPerformed
 
+    private void dulceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dulceriaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dulceriaActionPerformed
+
     private void dulceriaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_dulceriaMouseClicked
         // TODO add your handling code here:
         Dulceria principal = new Dulceria();
         dispose();
         principal.setVisible(true);
     }//GEN-LAST:event_dulceriaMouseClicked
-
-    private void dulceriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dulceriaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_dulceriaActionPerformed
 
     /**
      * @param args the command line arguments

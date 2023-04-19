@@ -66,10 +66,7 @@ public class KimetsuPagina extends javax.swing.JFrame {
     }
     
      public void abrirNuevoJFrame() {
-        // Crear una instancia del nuevo JFrame y pasar los datos de los asientos
-        KimetsuPagar kimetsuPagar = new KimetsuPagar(asientosSeleccionados, boletosSeleccionados);
-        dispose();
-        kimetsuPagar.setVisible(true);
+       
         
     }
 
